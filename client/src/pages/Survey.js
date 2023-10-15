@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import FirstQuestion from '../components/FirstQuestion/FirstQuestion';
 import SecondQuestion from '../components/SecondQuestion/SecondQuestion';
@@ -13,26 +14,37 @@ function Survey() {
   const [rcvdData3, setRcvdData3] = useState("");
   const [rcvdData4, setRcvdData4] = useState("");
   const [rcvdData5, setRcvdData5] = useState("");
-
+  const navigate = useNavigate();
   // Event handler to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/', {
+      
+       await axios.post('/', {
         rcvdData1: rcvdData1,
         rcvdData2: rcvdData2,
         rcvdData3: rcvdData3,
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
-      console.log('Form submitted with data:');
+console.log('Form submitted with data surCtrl:');
+ await axios.post('/review', {
+  rcvdData1: rcvdData1,
+  rcvdData2: rcvdData2,
+  rcvdData3: rcvdData3,
+  rcvdData4: rcvdData4,
+  rcvdData5: rcvdData5,
+});
+console.log('Form submitted with data revCtrl:');
+navigate('/review');
+
     } catch (error) {
       console.error('Error submitting form:', error);
     }
   };
 
-  // Axios GET request to '/test'
-      axios.get('/test');
+  // Axios GET request for testing...'
+      //axios.get('/test');
 
   // Event handlers to update state with received data
   const handleDataRcvd1 = (data) => setRcvdData1(data);
