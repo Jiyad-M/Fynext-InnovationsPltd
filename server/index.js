@@ -1,13 +1,26 @@
-const express = require ('express')
-const mongoose = require ('mongoose')
-const dotenv = require ('dotenv').config()
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
+const surRoute = require('./routes/surRoute');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+mongoose.connect(process.env.MONGO_URL,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        autoIndex: true, 
+      }).then(()=>{
+    console.log('mongodb connected...');}).catch((err)=>{
+        console.log('mongodb not connected!',err);
+ });
+
+app.use('/', surRoute);
 
 
-
-
-const port = 4000
-app.listen(port,()=>{
-    console.log(`server is running on post ${port}`)
-})
+const port = 7200; 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
