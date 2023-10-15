@@ -25,14 +25,14 @@ function Survey() {
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
-      console.log('Form submitted with data:', res.data);
+      console.log('Form submitted with data:');
     } catch (error) {
       console.error('Error submitting form:', error);
     }
   };
 
   // Axios GET request to '/test'
-  axios.get('/test');
+      axios.get('/test');
 
   // Event handlers to update state with received data
   const handleDataRcvd1 = (data) => setRcvdData1(data);
@@ -44,7 +44,6 @@ function Survey() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* Render each survey question component and pass data handlers */}
         <FirstQuestion onDataReceived={handleDataRcvd1} />
         <SecondQuestion onDataReceived={handleDataRcvd2} />
         <ThirdQuestion onDataReceived={handleDataRcvd3} />
