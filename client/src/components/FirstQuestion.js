@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 
-function FirstQuestion({onDataReceived}) {
+function FirstQuestion({ onDataReceived1 }) {
   const [selectedCheckbox, setSelectedCheckbox] = useState("checkbox1");
 
   const handleCheckboxChange = (event) => {
     setSelectedCheckbox(event.target.value);
-    onDataReceived(event.target.value);
+    onDataReceived1(event.target.value);
   };
 
 
   return (
-    <div>
-      <h2>How often do you use this app?</h2>
-      <label>
-       
+    <div className='checkbox-container up boarder'>
+      <h2><i className="fa-solid fa-arrow-right"></i> How often do you use this app?</h2>
+      <label htmlFor="firstid4">
+
         <input
+        id='firstid4'
           type="checkbox"
           value="Daily"
           checked={selectedCheckbox === "Daily"}
@@ -22,19 +23,21 @@ function FirstQuestion({onDataReceived}) {
         />
         Daily
       </label>
-      
-      <label>
+
+      <label htmlFor="firstid5">
         <input
+        id='firstid5'
           type="checkbox"
           value="Weekly"
           checked={selectedCheckbox === "Weekly"}
           onChange={handleCheckboxChange}
         />
-         Weekly
+        Weekly
       </label>
-      
-      <label>
+
+      <label htmlFor="firstid1">
         <input
+        id='firstid1'
           type="checkbox"
           value="Monthly"
           checked={selectedCheckbox === "Monthly"}
@@ -42,9 +45,10 @@ function FirstQuestion({onDataReceived}) {
         />
         Monthly
       </label>
-      
-      <label>
+
+      <label htmlFor="firstid2">
         <input
+        id='firstid2'
           type="checkbox"
           value="Rarely"
           checked={selectedCheckbox === "Rarely"}
@@ -52,9 +56,10 @@ function FirstQuestion({onDataReceived}) {
         />
         Rarely
       </label>
-      
-      <label>
+
+      <label htmlFor="firstid3">
         <input
+        id='firstid3'
           type="checkbox"
           value="First Time"
           checked={selectedCheckbox === "First Time"}

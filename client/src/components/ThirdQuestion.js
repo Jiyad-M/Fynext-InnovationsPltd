@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-function ThirdQuestion({onDataReceived}) {
+import './Common.css'
+function ThirdQuestion({ onDataReceived3 }) {
   const [num, setNum] = useState(5);
-  const [rate,setRate]=useState("Good")
-
+  const [rate, setRate] = useState("Good")
+  
   const handleInputChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
     setNum(newValue);
-   
+    
     setRate(getValueLabel(newValue))
-    onDataReceived(rate)
+    { onDataReceived3(rate) }
   };
   function getValueLabel(value) {
     switch (value) {
@@ -38,20 +39,26 @@ function ThirdQuestion({onDataReceived}) {
   }
 
   return (
-    <div>
-      <label htmlFor="scale">Select a value on a scale of 1 to 10:</label>
-      <input
-        type="range"
-        id="scale"
-        min="1"
-        max="10"
-        step="1"
-        value={num}
-        onChange={handleInputChange}
-      />
-      <p>
-        Selected Value: {num} -{' '}{rate}
-      </p>
+    <div className='third up boarder'>
+      <h2><i className="fa-solid fa-arrow-right">
+      </i> Select a value on a scale of 1 to 10:</h2>
+      <div className="thirdInp">
+
+        <label htmlFor="scale">
+          <input
+            className='form-range'
+            type="range"
+            id="scale"
+            min="1"
+            max="10"
+            step="1"
+            value={num}
+            onChange={handleInputChange}
+          />
+          <p>
+            {num + " " + rate}
+          </p></label>
+      </div>
     </div>
   );
 }

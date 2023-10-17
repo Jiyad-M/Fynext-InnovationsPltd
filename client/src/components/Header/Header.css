@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    align-items: left;
+  justify-content: space-between;
+  background: #37474f;
+  color: white;
+  padding-left: 100px;
+  height: 100px;
+}.header h2{
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}.nav{
+  display: flex;
+  align-items: end;
+  padding: 20px;
+}.nav .Link{
+  margin-right: 35px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}

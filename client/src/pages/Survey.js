@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import FirstQuestion from '../components/FirstQuestion/FirstQuestion';
-import SecondQuestion from '../components/SecondQuestion/SecondQuestion';
-import ThirdQuestion from '../components/ThirdQuestion/ThirdQuestion';
-import FourthQuestion from '../components/FourthQuestion/FourthQuestion';
-import FifthQuestion from '../components/FifthQuestion/FifthQuestion';
+import './Survey.css'
+import FirstQuestion from '../components/FirstQuestion';
+import SecondQuestion from '../components/SecondQuestion';
+import ThirdQuestion from '../components/ThirdQuestion';
+import FourthQuestion from '../components/FourthQuestion';
+import FifthQuestion from '../components/FifthQuestion';
+import Header from '../components/Header/Header';
 
 function Survey() {
   // Set up state variables to store data from child components
@@ -38,6 +40,7 @@ console.log('Form submitted with data surCtrl:');
 console.log('Form submitted with data revCtrl:');
 navigate('/review');
 
+
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -54,15 +57,21 @@ navigate('/review');
   const handleDataRcvd5 = (data) => setRcvdData5(data);
 
   return (
-    <div>
+    <div className='survey'>
+      <Header/>
+      <div className="form">
       <form onSubmit={handleSubmit}>
-        <FirstQuestion onDataReceived={handleDataRcvd1} />
-        <SecondQuestion onDataReceived={handleDataRcvd2} />
-        <ThirdQuestion onDataReceived={handleDataRcvd3} />
-        <FourthQuestion onDataReceived={handleDataRcvd4} />
-        <FifthQuestion onDataReceived={handleDataRcvd5} />
-        <button type="submit">Submit</button>
+        <FirstQuestion onDataReceived1={handleDataRcvd1} />
+        <SecondQuestion onDataReceived2={handleDataRcvd2} />
+        <ThirdQuestion onDataReceived3={handleDataRcvd3} />
+        <FourthQuestion onDataReceived4={handleDataRcvd4} />
+        <FifthQuestion onDataReceived5={handleDataRcvd5} />
+        <div className="btndiv">
+          <button className='btn btn-primary' type="submit">Submit</button>
+          </div>
       </form>
+      </div>
+      <div className="pic"><img src="https://softr-prod.imgix.net/applications/6b9ae2da-ae61-4608-ac7e-d0dc40c6ea61/assets/f0fae348-b83b-4e41-8d71-6b39516a5eb3.svg" alt="" /></div>
     </div>
   )
 }

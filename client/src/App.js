@@ -2,10 +2,12 @@ import './App.css';
 import { Routes, Route, BrowserRouter, } from 'react-router-dom';
 import Review from './pages/Review';
 import Survey from './pages/Survey';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <div className="App">
+         
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Survey />} />
