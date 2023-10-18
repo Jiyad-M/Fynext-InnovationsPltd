@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Survey.css'
 import FirstQuestion from '../components/FirstQuestion';
@@ -21,24 +21,24 @@ function Survey() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
-       await axios.post('/', {
+
+      await axios.post('/', {
         rcvdData1: rcvdData1,
         rcvdData2: rcvdData2,
         rcvdData3: rcvdData3,
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
-console.log('Form submitted with data surCtrl:');
- await axios.post('/review', {
-  rcvdData1: rcvdData1,
-  rcvdData2: rcvdData2,
-  rcvdData3: rcvdData3,
-  rcvdData4: rcvdData4,
-  rcvdData5: rcvdData5,
-});
-console.log('Form submitted with data revCtrl:');
-navigate('/review');
+      console.log('Form submitted with data surCtrl:');
+      await axios.post('/review', {
+        rcvdData1: rcvdData1,
+        rcvdData2: rcvdData2,
+        rcvdData3: rcvdData3,
+        rcvdData4: rcvdData4,
+        rcvdData5: rcvdData5,
+      });
+      console.log('Form submitted with data revCtrl:');
+      navigate('/review');
 
 
     } catch (error) {
@@ -47,7 +47,7 @@ navigate('/review');
   };
 
   // Axios GET request for testing...'
-      //axios.get('/test');
+  //axios.get('/test');
 
   // Event handlers to update state with received data
   const handleDataRcvd1 = (data) => setRcvdData1(data);
@@ -58,20 +58,22 @@ navigate('/review');
 
   return (
     <div className='survey'>
-      <Header/>
-      <div className="form">
-      <form onSubmit={handleSubmit}>
-        <FirstQuestion onDataReceived1={handleDataRcvd1} />
-        <SecondQuestion onDataReceived2={handleDataRcvd2} />
-        <ThirdQuestion onDataReceived3={handleDataRcvd3} />
-        <FourthQuestion onDataReceived4={handleDataRcvd4} />
-        <FifthQuestion onDataReceived5={handleDataRcvd5} />
-        <div className="btndiv">
-          <button className='btn btn-primary' type="submit">Submit</button>
-          </div>
-      </form>
+      <Header />
+      <div className="form-img">
+        <div className="form">
+          <form onSubmit={handleSubmit}>
+            <FirstQuestion onDataReceived1={handleDataRcvd1} />
+            <SecondQuestion onDataReceived2={handleDataRcvd2} />
+            <ThirdQuestion onDataReceived3={handleDataRcvd3} />
+            <FourthQuestion onDataReceived4={handleDataRcvd4} />
+            <FifthQuestion onDataReceived5={handleDataRcvd5} />
+            <div className="btndiv">
+              <button className='btn btn-primary' type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div className="pic"><img src="https://softr-prod.imgix.net/applications/6b9ae2da-ae61-4608-ac7e-d0dc40c6ea61/assets/f0fae348-b83b-4e41-8d71-6b39516a5eb3.svg" alt="" /></div>
       </div>
-      <div className="pic"><img src="https://softr-prod.imgix.net/applications/6b9ae2da-ae61-4608-ac7e-d0dc40c6ea61/assets/f0fae348-b83b-4e41-8d71-6b39516a5eb3.svg" alt="" /></div>
     </div>
   )
 }

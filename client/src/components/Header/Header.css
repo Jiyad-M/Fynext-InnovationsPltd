@@ -15,7 +15,7 @@
     padding: 0;
 }.nav{
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding: 20px;
 }.nav .Link{
   margin-right: 35px;

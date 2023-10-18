@@ -1,43 +1,5 @@
 
 .survey{
     margin-top: 100px;
-}
-p{
-
-    margin: 0;
-}h2{
-    font-weight: 400;
-    margin-top: 22px;
-    font-size: 22px;
-}input{
-    margin-left: 15px;
-    margin-right: 2px;
-}
-button{
-    border-radius: 7px;
-}
-img{
-    width: 400px;
-}.survey{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-}
-label{
-    color: #534c4c;
-
-}
-.up:hover{
-    color: blue;
-    transition: 0.3s;
-}.fifth-que input{
-    border-radius: 7px;
-    border: 1px solid gray;
-}.survey .btndiv{
-    display: flex;
-    justify-content: center;
-}.survey .btndiv button{
-    margin-right: 60px;
-    margin: 15px 0 15px 0;
+    min-width: 100%;
 }
