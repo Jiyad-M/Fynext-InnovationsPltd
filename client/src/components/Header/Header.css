@@ -6,8 +6,11 @@
     align-items: left;
   justify-content: space-between;
   background: #37474f;
-  color: white;
   padding-left: 100px;
+  color: white;
+  align-items: center;
+  
+ 
   height: 100px;
 }.header h2{
     font-size: 20px;
@@ -18,9 +21,15 @@
   align-items: flex-end;
   padding: 20px;
 }.nav .Link{
+  margin-top: 45px;
   margin-right: 35px;
   text-decoration: none;
   font-size: 20px;
   font-weight: 700;
   color: white;
+}
+@media (max-width: 767px) {
+  .header{
+    padding-left: 15px;
+  }
 }

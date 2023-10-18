@@ -9,8 +9,7 @@ function Header() {
     <h2>Product Survey</h2></div>
     <div className="nav">
       <Link className='Link' to="/">Home</Link>
-      <Link className='Link' >Lorem</Link>
-      <Link className='Link' >Lorem</Link>
+      
     
   </div>
   </div>
