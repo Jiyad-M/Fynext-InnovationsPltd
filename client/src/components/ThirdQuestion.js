@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Common.css'
 function ThirdQuestion({ onDataReceived3 }) {
   const [num, setNum] = useState(5);
   const [rate, setRate] = useState("Good")
+
+  useEffect(()=>{
+
+    onDataReceived3(rate) 
+  },[rate])
   
   const handleInputChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
     setNum(newValue);
     
     setRate(getValueLabel(newValue))
-    { onDataReceived3(rate) }
   };
   function getValueLabel(value) {
     switch (value) {
@@ -46,7 +50,7 @@ function ThirdQuestion({ onDataReceived3 }) {
 
         <label htmlFor="scale">
           <input
-            className='form-range'
+            className='form-range '
             type="range"
             id="scale"
             min="1"

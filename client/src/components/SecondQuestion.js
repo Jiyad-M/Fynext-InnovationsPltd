@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function SecondQuestion({ onDataReceived2 }) {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+  useEffect(()=>{
+    onDataReceived2(selectedCheckboxes) 
+
+  },[selectedCheckboxes])
 
   const handleCheckboxChange = (event) => {
     const newValue = event.target.value;
@@ -15,7 +19,6 @@ function SecondQuestion({ onDataReceived2 }) {
       setSelectedCheckboxes(selectedCheckboxes.filter((value) => value !== newValue));
     }
 
-    {onDataReceived2(selectedCheckboxes)} 
   };
   
   return (
