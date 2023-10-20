@@ -8,6 +8,7 @@ import ThirdQuestion from '../components/ThirdQuestion';
 import FourthQuestion from '../components/FourthQuestion';
 import FifthQuestion from '../components/FifthQuestion';
 import Header from '../components/Header/Header';
+import {toast} from 'react-hot-toast'
 
 function Survey() {
   // Set up state variables to store data from child components
@@ -22,7 +23,7 @@ function Survey() {
     e.preventDefault();
     try {
 
-      await axios.post('/', {
+      const {data} = await axios.post('/', {
         rcvdData1: rcvdData1,
         rcvdData2: rcvdData2,
         rcvdData3: rcvdData3,
@@ -37,12 +38,19 @@ function Survey() {
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
+      if(data.success=true){ 
+        toast.success(data.message);
+      }
+      if(data.success=false){
+        toast.error(data.message);
+      }
       console.log('Form submitted with data revCtrl:');
       navigate('/review');
 
 
     } catch (error) {
       console.error('Error submitting form:', error);
+      toast.error("Please complete all the questions.");
     }
   };
 
