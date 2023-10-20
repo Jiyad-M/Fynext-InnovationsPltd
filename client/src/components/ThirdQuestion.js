@@ -3,16 +3,25 @@ import './Common.css'
 function ThirdQuestion({ onDataReceived3 }) {
   const [num, setNum] = useState(5);
   const [rate, setRate] = useState("Good")
+  const [rateColor, setRateColor] = useState("green")
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    onDataReceived3(rate) 
-  },[rate])
-  
+    onDataReceived3(rate)
+  }, [rate])
+  useEffect(() => {
+    if (num < 5) {
+      setRateColor("red")
+    }
+    else {
+      setRateColor("green")
+    }
+  }, [num])
+
   const handleInputChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
     setNum(newValue);
-    
+
     setRate(getValueLabel(newValue))
   };
   function getValueLabel(value) {
@@ -59,7 +68,7 @@ function ThirdQuestion({ onDataReceived3 }) {
             value={num}
             onChange={handleInputChange}
           />
-          <p>
+          <p style={{ color: rateColor }}>
             {num + " " + rate}
           </p></label>
       </div>
