@@ -11,7 +11,6 @@ const surCtrl = async(req,res)=>{
                 , rcvdData4
                 , rcvdData5
             } = req.body;
-            console.log('req.body passed')
             
             const Questions = await SurveyDB.create({
                 Que1: rcvdData1,
