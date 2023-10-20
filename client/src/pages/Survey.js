@@ -22,6 +22,11 @@ function Survey() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if(rcvdData1 == ""||rcvdData2 == ""||rcvdData3 == ""||rcvdData4 == ""||rcvdData5 == "" ){
+
+        
+        toast.error("Please fill out all the questions on the form.");
+      }
 
      const {data} = await axios.post('/', {
         rcvdData1: rcvdData1,
@@ -41,7 +46,7 @@ function Survey() {
       if(data.success=true){ 
         toast.success(data.message);
       }
-      if(data.success=false){
+      else{
         toast.error(data.message);
       }
       console.log('Form submitted with data revCtrl:');
@@ -50,7 +55,8 @@ function Survey() {
 
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error("Please fill out all the questions on the form.");
+      toast.error("Error submitting form");
+      
     }
   };
 

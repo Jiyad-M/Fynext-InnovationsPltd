@@ -6,8 +6,8 @@
   "scripts": {
     "client": "cd ../client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "dev": "concurrently \"nodemon index.js\" \"npm run client\""
+    "dev": "nodemon index.js",
+    "start": "concurrently \"nodemon index.js\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",

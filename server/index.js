@@ -11,11 +11,12 @@ mongoose.connect(process.env.MONGO_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        autoIndex: true, 
+         
       }).then(()=>{
     console.log('mongodb connected...');}).catch((err)=>{
         console.log('mongodb not connected!',err);
  });
+
 
 app.use('/', surRoute);
 
