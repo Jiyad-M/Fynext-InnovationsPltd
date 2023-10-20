@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {toast} from 'react-hot-toast'
 import './Survey.css'
 import FirstQuestion from '../components/FirstQuestion';
 import SecondQuestion from '../components/SecondQuestion';
@@ -22,7 +23,7 @@ function Survey() {
     e.preventDefault();
     try {
 
-      await axios.post('/', {
+     const {data} = await axios.post('/', {
         rcvdData1: rcvdData1,
         rcvdData2: rcvdData2,
         rcvdData3: rcvdData3,
@@ -37,12 +38,19 @@ function Survey() {
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
+      if(data.success=true){ 
+        toast.success(data.message);
+      }
+      if(data.success=false){
+        toast.error(data.message);
+      }
       console.log('Form submitted with data revCtrl:');
       navigate('/review');
 
 
     } catch (error) {
       console.error('Error submitting form:', error);
+      toast.error("Please fill out all the questions on the form.");
     }
   };
 
@@ -59,7 +67,7 @@ function Survey() {
   return (
     <div className='survey'>
       <Header />
-      <div className="form-img">
+      <div className="form-img" >
         <div className="form">
           <form onSubmit={handleSubmit}>
             <FirstQuestion onDataReceived1={handleDataRcvd1} />
