@@ -22,7 +22,7 @@ function Survey() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if(rcvdData1 == ""||rcvdData2 == ""||rcvdData3 == ""||rcvdData4 == ""||rcvdData5 == "" ){
+      if(rcvdData1 === ""||rcvdData2 === ""||rcvdData3 === ""||rcvdData4 === ""||rcvdData5 === "" ){
 
         
         toast.error("Please fill out all the questions on the form.");
@@ -43,7 +43,7 @@ function Survey() {
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
-      if(data.success=true){ 
+      if(data.success){ 
         toast.success(data.message);
       }
       else{
