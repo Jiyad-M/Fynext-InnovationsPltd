@@ -8,7 +8,7 @@ const { revCtrlGet, revCtrlPost } = require('../controllers/revCtrl.js');
 router.use(
     cors({
         credentials : true,
-        origin : "http://localhost:3000"
+        origin : "https://new-fynext-client.vercel.app"
     }
     )
 )
