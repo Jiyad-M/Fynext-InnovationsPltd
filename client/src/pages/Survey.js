@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {toast} from 'react-hot-toast'
 import './Survey.css'
 import FirstQuestion from '../components/FirstQuestion';
 import SecondQuestion from '../components/SecondQuestion';
@@ -8,7 +9,6 @@ import ThirdQuestion from '../components/ThirdQuestion';
 import FourthQuestion from '../components/FourthQuestion';
 import FifthQuestion from '../components/FifthQuestion';
 import Header from '../components/Header/Header';
-import {toast} from 'react-hot-toast'
 
 function Survey() {
   // Set up state variables to store data from child components
@@ -22,8 +22,13 @@ function Survey() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if(rcvdData1 === ""||rcvdData2 === ""||rcvdData3 === ""||rcvdData4 === ""||rcvdData5 === "" ){
 
-      const {data} = await axios.post('/', {
+        
+        toast.error("Please fill out all the questions on the form.");
+      }
+
+     const {data} = await axios.post('/', {
         rcvdData1: rcvdData1,
         rcvdData2: rcvdData2,
         rcvdData3: rcvdData3,
@@ -38,10 +43,10 @@ function Survey() {
         rcvdData4: rcvdData4,
         rcvdData5: rcvdData5,
       });
-      if(data.success=true){ 
+      if(data.success){ 
         toast.success(data.message);
       }
-      if(data.success=false){
+      else{
         toast.error(data.message);
       }
       console.log('Form submitted with data revCtrl:');
@@ -50,7 +55,8 @@ function Survey() {
 
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error("Please complete all the questions.");
+      toast.error("Error submitting form");
+      
     }
   };
 
@@ -67,7 +73,7 @@ function Survey() {
   return (
     <div className='survey'>
       <Header />
-      <div className="form-img">
+      <div className="form-img" >
         <div className="form">
           <form onSubmit={handleSubmit}>
             <FirstQuestion onDataReceived1={handleDataRcvd1} />
